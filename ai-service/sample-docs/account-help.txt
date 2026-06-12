@@ -1,0 +1,13 @@
+Account Management Guide
+
+Creating an Account:
+Users can create an account by clicking the Sign Up button and completing the registration form.
+
+Updating Profile Information:
+Users can update their profile information from the Profile Settings page.
+
+Deleting an Account:
+Users may request account deletion through the Privacy section of their account settings.
+
+Password Security:
+Passwords should contain at least 8 characters, including uppercase letters, lowercase letters, numbers, and special characters.
