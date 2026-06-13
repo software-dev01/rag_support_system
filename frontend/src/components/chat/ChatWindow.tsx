@@ -3,6 +3,7 @@ import {
   Bot,
   User,
   FileText,
+  Loader2,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
@@ -88,9 +89,8 @@ export default function ChatWindow({
                       isLast &&
                       message.role ===
                       "assistant" && (
-                        <span className="ml-1 animate-pulse">
-                          ▋
-                        </span>
+                       
+                        <Loader2 className="ml-2 h-4 w-4 animate-spin text-muted-foreground" />
                       )}
                   </p>
                 </div>
