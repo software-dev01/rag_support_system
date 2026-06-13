@@ -31,7 +31,10 @@ app.add_middleware(
 app.include_router(upload_router)
 
 
-@app.get("/")
+@app.api_route(
+    "/",
+    methods=["GET", "HEAD"]
+)
 def health():
     """
     Health Check Endpoint
@@ -41,6 +44,26 @@ def health():
         "status": "healthy"
     }
 
+import os
+
+@app.get("/debug")
+def debug():
+    return {
+        "status": "healthy",
+        "gemini_key": bool(
+            os.getenv(
+                "GEMINI_API_KEY"
+            )
+        ),
+        "mongo_uri": bool(
+            os.getenv(
+                "MONGO_URI"
+            )
+        ),
+        "vector_index": os.getenv(
+            "VECTOR_INDEX"
+        ),
+    }
 
 @app.post("/ask")
 def ask(
