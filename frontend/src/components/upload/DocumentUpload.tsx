@@ -8,7 +8,12 @@ import {
 
 import { Button } from "@/components/ui/button";
 
+
 export default function DocumentUpload() {
+
+  const API_URL =
+    import.meta.env.VITE_API_URL;
+
   const fileInputRef =
     useRef<HTMLInputElement>(null);
 
@@ -39,12 +44,18 @@ export default function DocumentUpload() {
       );
 
       await axios.post(
-        `${process.env.AI_SERVICE_URL}/upload`,
-        formData
+        `${API_URL}/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type":
+              "multipart/form-data",
+          },
+        }
       );
 
       await axios.post(
-        `${process.env.AI_SERVICE_URL}/reingest`
+        `${API_URL}/reingest`
       );
 
       setSuccess(true);

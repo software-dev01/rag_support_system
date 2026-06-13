@@ -55,9 +55,9 @@ def debug():
                 "GEMINI_API_KEY"
             )
         ),
-        "mongo_uri": bool(
+        "mongodb_url": bool(
             os.getenv(
-                "MONGO_URI"
+                "MONGODB_URI"
             )
         ),
         "vector_index": os.getenv(

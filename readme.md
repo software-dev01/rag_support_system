@@ -213,7 +213,7 @@ uvicorn app.main:app --reload
 ---
 
 Create a `.env` file inside `ai-service`:
-MONGO_URI=your_mongodb_connection_string
+MONGODB_URI=your_mongodb_connection_string
 DB_NAME=rag_support
 COLLECTION_NAME=documents
 VECTOR_INDEX=vector_index

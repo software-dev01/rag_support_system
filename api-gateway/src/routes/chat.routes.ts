@@ -10,9 +10,21 @@ import {
   stream,
 } from "../controllers/stream.controller";
 import axios from "axios";
+import multer from "multer";
+import { upload } from "../controllers/upload.controller";
+import { reingest } from "../controllers/reingest.controller";
 
 const router =
   Router();
+
+
+
+const uploadMiddleware =
+  multer({
+    storage:
+      multer.memoryStorage(),
+  });
+
 
 router.post(
   "/ask",
@@ -22,6 +34,40 @@ router.post(
 router.post(
   "/stream",
   stream
+);
+
+router.post(
+  "/upload",
+  (req, res, next) => {
+    uploadMiddleware.single("file")(
+      req,
+      res,
+      (err) => {
+
+        if (err) {
+          console.error(
+            "MULTER ERROR:",
+            err
+          );
+
+          return res
+            .status(500)
+            .json({
+              error:
+                "Multer failed",
+            });
+        }
+
+        next();
+      }
+    );
+  },
+  upload
+);
+
+router.post(
+  "/reingest",
+  reingest
 );
 
 
