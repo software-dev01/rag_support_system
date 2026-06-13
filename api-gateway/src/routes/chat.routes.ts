@@ -9,6 +9,7 @@ import {
 import {
   stream,
 } from "../controllers/stream.controller";
+import axios from "axios";
 
 const router =
   Router();
@@ -21,6 +22,32 @@ router.post(
 router.post(
   "/stream",
   stream
+);
+
+
+router.get(
+  "/test-ai",
+  async (_req, res) => {
+    try {
+      const response =
+        await axios.get(
+          `${process.env.AI_SERVICE_URL}/debug`
+        );
+
+      return res.json({
+        success: true,
+        data: response.data,
+      });
+    } catch (error: any) {
+      console.error(error);
+
+      return res.status(500).json({
+        error: error.message,
+        details:
+          error.response?.data,
+      });
+    }
+  }
 );
 
 export default router;
