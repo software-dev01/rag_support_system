@@ -39,12 +39,12 @@ export default function DocumentUpload() {
       );
 
       await axios.post(
-        "http://localhost:8000/upload",
+        `${process.env.AI_SERVICE_URL}/upload`,
         formData
       );
 
       await axios.post(
-        "http://localhost:8000/reingest"
+        `${process.env.AI_SERVICE_URL}/reingest`
       );
 
       setSuccess(true);
