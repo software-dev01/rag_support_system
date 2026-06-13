@@ -5,9 +5,16 @@ export const stream = async (
   res: Response
 ) => {
   try {
+
+
+    console.log(
+      "Streaming URL:",
+      `${process.env.AI_SERVICE_URL}/stream`
+    );
+
     const response =
       await fetch(
-        "http://localhost:8000/stream",
+        `${process.env.AI_SERVICE_URL}/stream`,
         {
           method: "POST",
           headers: {
